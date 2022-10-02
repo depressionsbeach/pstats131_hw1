@@ -202,7 +202,8 @@ Which variables are positively or negatively correlated with which
 others? Do these relationships make sense to you? Are there any that
 surprise you?
 
-
+**'displ' is strongly positively correlated with 'cyl', and rather strongly negatively correlated with 'cty' and 'hwy'. ''cyl' is rather strongly negatively correlated with 'cty' and 'hwy'. 'cty' is strongly positively correlated with 'hwy'. 'year' is pretty much uncorrelated with all other variables. **<br />
+**I'm sure these relationships will make sense to me if I knew more about cars. I googled the terms and they mostly make sense. The only mild surprise is that 'year' is not related to any other variable. I guess technology didn't advance much during that period.** 
 :::
 
 ::: {#students-only .section .level3}
