@@ -1,6 +1,7 @@
 # Homework 1 {#homework-1 .title .toc-ignore}
 
 #### PSTAT 131/231 {#pstat-131231 .author}
+#### Baiming Wang {#pstat-131231 .author}
 
 ::: {#machine-learning-main-ideas .section .level2}
 ## Machine Learning Main Ideas
@@ -74,6 +75,7 @@ the following questions.
 
 -   Describe how the bias-variance tradeoff is related to the use of
     mechanistic or empirically-driven models.
+    **If we use a rather unsophisticated mechanistic or empirically-driven model on a training data set, we should expect a large bias. But, since the model is rather unsophisticated, it should change little had we chosen a different training set, hence a small variance. As the model gets more complex, the bias decreases, but the variance increases as our model becomes more sample-dependent (i.e., picking up the noise within the specific data set). This is the bias-variance trade-off.**
 :::
 
 ::: {#question-6 .section .level3}
@@ -85,9 +87,11 @@ questions:
 
 -   Given a voter's profile/data, how likely is it that they will vote
     in favor of the candidate?
+    **Predictive. The campaign is interested in accurately predicting whether the voter will vote for the candidate, but uninterested in which factors lead to that vote and how.**
 
 -   How would a voter's likelihood of support for the candidate change
     if they had personal contact with the candidate?
+    **Inferential. The campaign is interested in the specific correlation (and possibly causation) between personal contacts with a voter and the likelihood of the voter's support, which is a statistical inference. **
 
 Classify each question as either predictive or inferential. Explain your
 reasoning for each.
