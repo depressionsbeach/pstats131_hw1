@@ -31,6 +31,11 @@ model, specifically in the context of machine learning.
 
 Name two commonly used metrics for regression ML problems. Name two
 commonly used metrics for classification ML problems.
+
+**R-squared and Mean Squared Error are two metrics to evaluate regression ML models; Error rate, precision, and sensitivity(recall) are three metrics to evaluate classification ML models.**
+<br /><br />
+For the latter question, my answer is partially based on https://www.analyticsvidhya.com/blog/2021/07/metrics-to-evaluate-your-classification-model-to-take-the-right-decisions/
+
 :::
 
 ::: {#question-4 .section .level3}
@@ -41,10 +46,13 @@ These purposes can generally be classified into the following three
 categories. Provide a brief description of each.
 
 -   Descriptive models:
+**Descriptive models are models used to describe and illustrate characteristics of a data set. For instance, they can be used to visualize trends and patterns within data.**
 
 -   Inferential models:
+**Inferential models are models used to make inferences of the associations of variables. For instance, they can help test theories about correlative and causal relationships between variables. Their aim is to understand and perhaps explain those relationships.**
 
 -   Predictive models:
+**Predictive models are models used to predict the value of an output variable with a set of available input variables. It is often used when the true value of the output variable is difficult to obtain. Their aim is to accurately predict the output variable.**
 :::
 
 ::: {#question-5 .section .level3}
@@ -56,9 +64,13 @@ the following questions.
 
 -   Define mechanistic. Define empirically-driven. How do these model
     types differ? How are they similar?
+    **Mechanistic models are those that assume a parametric form of the function from input variables to the output variable. They adjust the parameters of that function to get close to the data points. Empirically-driven models don't make those assumption. They utilize different forms of functions to get close to the true function between output and input variables.**
+    **The key difference is whether or not there is an assumption about the form of the function. Consequently, empirically-driven models are usually more flexible, but require more data. It might be harder to explain empirically-driven models because they may come in unexpected forms.**
+    **There are similarities. For instance, both kinds of models are vulnerable to overfitting.**
 
 -   In general, is a mechanistic or empirically-driven model easier to
     understand? Explain your choice.
+    **I think mechanistic models are easier to understand. We make assumptions about the function between output and input variables, and those assumptions usually arise from existing empirical and scientific knowledge. In other words, these models are easier to understand and explain because our assumptions are typically reasonable in the first place. On the other hand, empirically-driven models are highly mathematical, and such numerical analysis can produce unexpected and convoluted estimator functions that are very hard to contextually understand and explain. **
 
 -   Describe how the bias-variance tradeoff is related to the use of
     mechanistic or empirically-driven models.
@@ -107,7 +119,6 @@ You should use the tidyverse and `ggplot2` for these exercises.
 ```{r, echo = FALSE, message=FALSE}
 library(ggplot2)
 library(tidyverse)
-
 ```
 
 
@@ -169,7 +180,6 @@ what?
 
 ```{r, echo=FALSE}
 mpg %>%
-  group_by(cyl)%>%
   ggplot(aes(group = cyl, x = factor(cyl), y = hwy)) + geom_boxplot() + labs(x = 'Number of Cylinders', y = 'Highway Miles Per Gallon')
 
 #Credit to https://stackoverflow.com/questions/57107461/boxplot-by-group-and-then-column-in-r
@@ -215,17 +225,58 @@ surprise you?
 Recreate the following graphic, as closely as you can. *Hint: Use the
 `ggthemes` package.*
 
+**My Attempt**
+```{r, echo=FALSE, message=FALSE}
+#install.packages('ggthemes')
+library(ggthemes)
+
+```
+**My Attempt**
+```{r, echo=FALSE}
+mpg %>%
+  ggplot(aes(x = class, y = hwy)) +
+  geom_boxplot() + theme_bw()+ geom_point(position = position_dodge2(width = 0.75), alpha = 0.2)+ 
+  coord_flip() +
+  labs(y = 'Highway MPG', x = 'Vehicle Class')
+
+#position_dodge2(width = c(0.8, 0.2)), alpha = 0.2)
+```
+
+
+
 
 ::: {#exercise-7 .section .level4}
 #### Exercise 7
 
 Recreate the following graphic.
 
+**My Attempt**
+```{r, echo=FALSE}
+mpg %>%
+  ggplot(aes(x = class, y = hwy, fill = drv)) +
+  geom_boxplot()
+
+```
+
 
 ::: {#exercise-8 .section .level4}
 #### Exercise 8
 
 Recreate the following graphic.
+
+**My Attempt**
+```{r, echo=FALSE, message=FALSE}
+mpg %>%
+  ggplot(aes(x = displ, y = hwy)) +
+  geom_point(aes(colour = drv)) +
+  geom_smooth(aes(linetype = drv), se = FALSE)
+
+#se = FALSE, not display confidence intervals
+
+#Credit: https://brshallo.github.io/r4ds_solutions/03-data-visualization.html
+
+```
+
 
 
 :::
