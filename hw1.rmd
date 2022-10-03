@@ -18,6 +18,7 @@ as simple as "from the lecture/page \# of book").
 
 Define supervised and unsupervised learning. What are the difference(s)
 between them?
+**Supervised learning is machine learning on data sets that, for each observation of predictor/input variables, there is a response/output variable, and we fit a model that relates the response to the predictors. (paraphrasing ISLR, p26). Unsupervised learning is when said response/output variable does not exist. We can look for relationships between variables and patterns, trends, and clusters within the data in this situation.**
 :::
 
 ::: {#question-2 .section .level3}
@@ -25,6 +26,9 @@ between them?
 
 Explain the difference between a regression model and a classification
 model, specifically in the context of machine learning.
+<br />
+**The outcome/response variable of a regression model is quantitative, whereas it is qualitative for a classification model.**
+
 :::
 
 ::: {#question-3 .section .level3}
@@ -137,7 +141,9 @@ Create a histogram of this variable. Describe what you see/learn.
 mpg %>%
   ggplot(aes(x=hwy)) + geom_histogram(bins = 30) + labs(x = "Highway Mile Per Gallon")
 ```
-**It is a bimodal distribution with one peak at around 17 and another at around 27**
+<br />
+
+**It is a bimodal distribution with one peak at around 17 and another at around 27. It suggests that one can possibly separate cars into two groups by highway fuel efficiency.**
 
 :::
 
@@ -154,7 +160,7 @@ mpg %>%
   ggplot(aes(x = hwy, y = cty)) + geom_point() + labs(x = "Highway Mile Per Gallon", y = "City Miles Per Gallon")
 ```
 
-**There is a rather strong relationship. Hwy and cty are positively and quite linearly correlated. This means that, for a car in this data set, the higher its highway mileage per gallon, the higher its city mileage per gallon.**
+**There is a rather strong relationship. Hwy and cty are positively and linearly correlated. This means that, for a car in this data set, the higher its highway mileage per gallon, the higher its city mileage per gallon.**
 :::
 
 ::: {#exercise-3 .section .level3}
@@ -188,7 +194,9 @@ mpg %>%
 
 #Credit to https://stackoverflow.com/questions/57107461/boxplot-by-group-and-then-column-in-r
 ```
-**Yes, there is a pattern. Broadly speaking, in this data set, the more cylinders a car has, the lower its mileage per gallon is.**
+<br />
+
+**Yes, there is a pattern. Broadly speaking, the more cylinders a car has, the lower its mileage per gallon is.**
 :::
 
 ::: {#exercise-5 .section .level3}
@@ -229,7 +237,6 @@ surprise you?
 Recreate the following graphic, as closely as you can. *Hint: Use the
 `ggthemes` package.*
 
-**My Attempt**
 ```{r, echo=FALSE, message=FALSE}
 #install.packages('ggthemes')
 library(ggthemes)
